@@ -78,6 +78,13 @@
     --global-transition: all 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --global-page-color: White;
+        --global-page-backgroundColor: var(--global-color-neutral-xxxx-dark);
+    }
+}
+
 /*------------------------------------*\
 #GENERIC
 \*------------------------------------*/
@@ -92,7 +99,7 @@ html {
     line-height: 1.5;
     font-family: "Inter Web", Helvetica, arial, sans-serif;
     color: var(--global-color-neutral-xxxx-dark);
-    background-color: var(--global-color-neutral-xxxx-light);
+    background-color: var(--global-page-backgroundColor, var(--color-neutral-xxxx-dark));
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -526,15 +533,23 @@ input::placeholder {
 }
 
 .c-logo__path--1 {
-    fill: var(--global-color-neutral-xxxx-dark);
+    fill: var(--logo__path--1--fill, var(--global-color-neutral-xxxx-dark));
 }
 
 .c-logo__path--2 {
-    fill: var(--global-color-alpha);
+    fill: var(--logo__path--2--fill, var(--global-color-alpha));
 }
 
 .c-logo__path--3 {
-    fill: var(--global-color-alpha-x-dark);
+    fill: var(--logo__path--3--fill, var(--global-color-alpha-x-dark));
+}
+
+@media (prefers-color-scheme: dark) {
+    .c-logo {
+        --logo__path--1--fill: White;
+        --logo__path--2--fill: var(--logo__path--1--fill);
+        --logo__path--3--fill: var(--logo__path--1--fill);
+    }
 }
 
 /*
@@ -551,6 +566,13 @@ input::placeholder {
     overflow: hidden;
 }
 
+@media (prefers-color-scheme: dark) {
+    .c-card {
+        background-color: #35374D;
+        color: white;
+    }
+}
+
 /* Add padding to child for more flexibility */
 .c-card__body,
 .c-card__footer {
@@ -560,6 +582,12 @@ input::placeholder {
 .c-card__footer {
     text-align: center;
     border-top: var(--global-borderWidth) solid var(--global-color-neutral-xxx-light);
+}
+
+@media (prefers-color-scheme: dark) {
+    .c-card__footer {
+        border-top: var(--global-borderWidth) solid #20223a;
+    }
 }
 
 .c-card__title {
@@ -620,6 +648,14 @@ input::placeholder {
     padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-md);
     outline: none;
     transition: border var(--global-transition-timing-alpha);
+}
+
+@media (prefers-color-scheme: dark) {
+    .c-input {
+        background-color: #20223a;
+        border-color: #20223a;
+        color: white;
+    }
 }
 
 .c-input:hover {
@@ -834,6 +870,12 @@ input::placeholder {
     padding-bottom: var(--global-whitespace-xs);
     line-height: calc(var(--global-baseline) * 2);
     color: var(--global-color-neutral-xx-dark);
+}
+
+@media (prefers-color-scheme: dark) {
+    .c-label {
+        color: #999;
+    }
 }
 
 .c-label--option {
